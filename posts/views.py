@@ -1,7 +1,7 @@
-from rest_framework import generics #, permissions, viewsets
+from rest_framework import generics, permissions#, viewsets
 from .models import Post
 # from django.contrib.auth import get_user_model
-# from .permissions import IsAuthorOrReadOnly
+from .permissions import IsAuthorOrReadOnly
 from .serializers import PostSerializer#, UserSerializer
 
 
@@ -12,7 +12,7 @@ class PostList(generics.ListCreateAPIView):
 
 class PostDetail(generics.RetrieveUpdateDestroyAPIView):
     # permission_classes = (permissions.IsAuthenticated,)
-    # permission_classes = (IsAuthorOrReadOnly,)
+    permission_classes = (IsAuthorOrReadOnly,)
     queryset = Post.objects.all()
     serializer_class = PostSerializer
 
