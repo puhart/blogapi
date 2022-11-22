@@ -23,11 +23,14 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/v1/', include('posts.urls')),
     path('api-auth', include('rest_framework.urls')),
-    # for login/logout possibility
+    # for login/logout possibility at top right corner
+    path('api/v1/dj-rest-auth/', include('dj_rest_auth.urls')),
+    # for separate login/logout/change_password/password_reset
+    # on separate endpoints
+    path('api/v1/dj-rest-auth/registration',
+            include('dj_rest_auth.registration.urls')),
+    # for user registration/authenticaction
 
-    # path('api/v1/dj-rest-auth/', include('dj_rest_auth.urls')),
-    # path('api/v1/dj-rest-auth/registration',
-    #         include('dj_rest_auth.registration.urls')),
     # path('openapi', get_schema_view(
     #     title='Blog API',
     #     description='A sample API for learning DRF',
